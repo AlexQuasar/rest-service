@@ -1,0 +1,24 @@
+server:
+  port: 8088
+debug: false
+
+datasource:
+  jdbc-url: jdbc:postgresql://localhost:5432/postgres
+  username: postgres
+  password: toor
+  driver-class-name: org.postgresql.Driver
+
+spring:
+  liquibase:
+    change-log: classpath:/db-migration/changelog.xml
+    enabled: true
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create-drop
+
+settings:
+  inHibernate: true
+  maxDateMonths: 360

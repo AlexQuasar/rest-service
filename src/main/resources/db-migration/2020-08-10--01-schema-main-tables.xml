@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="AlexQuasar" id="create-customer-bank-deposit-tables">
+        <createTable tableName="customer">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_customer"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="наименование"/>
+            <column name="short_name" type="varchar(127)" remarks="краткое наименование"/>
+            <column name="address" type="varchar(255)" remarks="адрес"/>
+            <column name="legal_information" type="varchar(255)" remarks="организационная-правовая форма"/>
+        </createTable>
+
+        <createTable tableName="bank">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_bank"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="наименование"/>
+            <column name="identification_code" type="integer" remarks="БИК"/>
+        </createTable>
+
+        <createTable tableName="deposit">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_deposit"/>
+            </column>
+            <column name="customer_id" type="bigint" remarks="клиент"/>
+            <column name="bank_id" type="bigint" remarks="банк"/>
+            <column name="open_date" type="date" remarks="дата открытия"/>
+            <column name="percent" type="integer" remarks="процент"/>
+            <column name="date_months" type="integer" remarks="срок в месяцах"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
